@@ -2,7 +2,7 @@
 name: infrastructure-check
 on:
   pull_request_target:
-    types: [ "opened", "synchronize", "reopened", "labeled", "unlabled" ]
+    types: [ "opened", "synchronize", "reopened", "labeled", "unlabeled" ]
 
 permissions:
   contents: read
