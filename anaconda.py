@@ -30,7 +30,7 @@ import time
 import signal
 import pid
 
-
+trlala
 def exitHandler(rebootData):
     # Clear the list of watched PIDs.
     from pyanaconda.core.process_watchers import WatchProcesses
