@@ -8,6 +8,11 @@ permissions:
   contents: read
   pull-requests: write
 
+# Prevents running the workflow multiple times in case one change triggers multiple trigger types.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   infra-check:
     if: contains(github.event.pull_request.labels.*.name, 'infrastructure')
