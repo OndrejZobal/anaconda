@@ -2,7 +2,7 @@
 #
 # anaconda: The Red Hat Linux Installation program
 #
-# Copyright (C) 1999-2013
+# Copyright (C) 1999-2013zvzcv
 # Red Hat, Inc.  All rights reserved.
 #
 # This program is free software; you can redistribute it and/or modify
