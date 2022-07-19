@@ -1,3 +1,4 @@
+Very not good.
 #!/usr/bin/python3
 #
 # anaconda: The Red Hat Linux Installation program
