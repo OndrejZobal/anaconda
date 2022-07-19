@@ -9,16 +9,11 @@
 name: infrastructure-check
 on:
   pull_request_target:
-    types: [ "opened", "synchronize", "reopened", "labeled", "unlabeled" ]
+    types: [ "synchronize", "reopened", "labeled", "unlabeled" ]
 
 permissions:
   contents: read
   pull-requests: write
-
-# Prevents running the workflow multiple times in case one change triggers multiple trigger types.
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
 
 jobs:
   infra-check:
@@ -86,8 +81,14 @@ jobs:
 
           done
 
-          if [ "$failed_check" == "yes" ]; then
-            gh pr comment ${{ github.event.pull_request.number }} -F ./message.txt
+          # Label related actions should only trigger comment if the "infrastructure" label triggered it specifically.
+          skip_comment="no"
+          if ([ "${{ github.event.action }}" == "labeled" ] || [ "${{ github.event.action }}" == "unlabeled" ]) && [ "${{ github.event.label.name }}" != "infrastructure" ]; then
+            skip_comment="yes"
+          fi
+
+          if [ "$failed_check" == "yes" ] && [ "$skip_comment" != "yes" ]; then
+              gh pr comment ${{ github.event.pull_request.number }} -F ./message.txt
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
