@@ -1,3 +1,4 @@
+hi ha hu ha hi  
 #!/usr/bin/python3
 #
 # anaconda: The Red Hat Linux Installation program
