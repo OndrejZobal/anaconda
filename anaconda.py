@@ -1,3 +1,4 @@
+Who let the dogs out.
 #!/usr/bin/python3
 #
 # anaconda: The Red Hat Linux Installation program
