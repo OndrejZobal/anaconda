@@ -1,6 +1,6 @@
 # Do a build of the rhel-8 branch to RH internal COPR
 name: Build current anaconda rhel-8 branch in RHEL COPR
-on:
+on: only infra
   schedule:
     - cron: 0 2 * * *
   # be able to start this action manually from a actions tab when needed
