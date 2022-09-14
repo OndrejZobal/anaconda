@@ -17,8 +17,6 @@
 # License and may only be used or replicated with the express permission of
 # Red Hat, Inc.
 #
-import langtable
-
 from pyanaconda.modules.common.structures.language import LanguageData, LocaleData
 from pyanaconda.modules.common.constants.services import LOCALIZATION
 from dasbus.server.property import emits_properties_changed
@@ -74,9 +72,9 @@ class LocalizationInterface(KickstartModuleInterface):
 
         For example: ["ar_EG.UTF-8", "en_US.UTF-8", "en_GB.UTF-8", ...]
 
-        :return: a list of common locale IDs.
+        :return: a list of common locale IDs
         """
-        return langtable.list_common_locales()
+        return self.implementation.get_common_locales()
 
     def GetLocaleData(self, locale_id: Str) -> Structure:
         """Get data about the specified locale.
